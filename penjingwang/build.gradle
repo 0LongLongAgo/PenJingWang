@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "sysshare.lq.com.penjingwang"
         minSdkVersion 15
@@ -35,7 +36,11 @@ dependencies {
     implementation 'com.just.agentweb:agentweb:4.0.1'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.squareup.leakcanary:leakcanary-android:1.5.4' //只在debug模式下有用
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.16'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
 }

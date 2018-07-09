@@ -32,7 +32,7 @@ public abstract class BasePresenterFragment<P extends BasePresenter<V>,V extends
    private void detachView() {
        if (mPresenter != null) {
            mPresenter.detachView();
-           mPresenter.removeAllDisPosable();
+           mPresenter.removeAllDisposable();
            mPresenter = null;
        }
     }
