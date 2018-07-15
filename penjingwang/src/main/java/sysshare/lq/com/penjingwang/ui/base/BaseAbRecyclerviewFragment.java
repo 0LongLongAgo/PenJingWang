@@ -7,4 +7,5 @@ public abstract class BaseAbRecyclerviewFragment<P extends BasePresenter<V>,V ex
 
 
 
+
 }

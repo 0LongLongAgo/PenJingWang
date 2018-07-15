@@ -1,0 +1,93 @@
+package sysshare.lq.com.penjingwang.ui.base;
+
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import sysshare.lq.com.penjingwang.R;
+import sysshare.lq.com.penjingwang.ui.mvp.presenter.BasePresenter;
+import sysshare.lq.com.penjingwang.ui.mvp.view.IView;
+import sysshare.lq.com.penjingwang.utils.AppUtils;
+import sysshare.lq.com.penjingwang.utils.ToastUtils;
+
+/**
+ * @author zzq  作者 E-mail:   soleilyoyiyi@gmail.com
+ * @date 创建时间：2017/6/5 22:43
+ * 描述:基础刷新Activity
+ */
+
+public abstract class BaseRefreshActivity<P extends BasePresenter<V>, V extends IView, T> extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+    protected RecyclerView mRecycler;
+    protected SwipeRefreshLayout mRefresh;
+    protected boolean mIsRefreshing = false;
+    protected List<T> mList = new ArrayList<>();
+//    private ProgressWheel mLoading;
+
+    protected void initRefreshLayout() {
+        if (mRefresh != null) {
+            mRefresh.setColorSchemeResources(R.color.colorPrimary);
+            mRecycler.post(() -> {
+                mRefresh.setRefreshing(true);
+                loadData();
+            });
+            mRefresh.setOnRefreshListener(this);
+        }
+    }
+
+    protected void initWidget(View view) {
+//        mRefresh = view.findViewById(this, R.id.refresh);
+//        mRecycler = view.findViewById(this, R.id.recycler);
+        //加载框
+//        mLoading = ButterKnife.findById(this, R.id.pw_loading);
+        initRefreshLayout();
+//        initRecyclerView();
+    }
+
+    @Override
+    public void onRefresh() {
+        clearData();
+        loadData();
+    }
+
+    protected void clearData() {
+        mIsRefreshing = true;
+    }
+
+//    @Override
+//    public void complete() {
+//        super.complete();
+//        AppUtils.runOnUIDelayed(() -> {
+//            if (mRefresh != null)
+//                mRefresh.setRefreshing(false);
+//        }, 650);
+//        if (mIsRefreshing) {
+//            if (mList != null) mList.clear();
+//            clear();
+//            ToastUtils.showSingleLongToast("刷新成功");
+//        }
+//        mIsRefreshing = false;
+//
+//        if (mLoading != null) {
+//            gone(mLoading);
+//        }
+//    }
+
+    protected void clear() {
+
+    }
+
+//    @Override
+//    protected void initDatas() {
+//        if (mRefresh == null) {//
+//            if (mLoading != null) {
+//                visible(mLoading);
+//                AppUtils.runOnUIDelayed(this::loadData, 650);
+//            } else {
+//                super.initDatas();
+//            }
+//        }
+//    }
+}
